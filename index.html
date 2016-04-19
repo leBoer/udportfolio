@@ -12,6 +12,7 @@
 
     <link href="css/style.css" rel="stylesheet">
     <link href="css/print.css" rel="stylesheet" media="print">
+    <link href="css/smartphone.css" rel="stylesheet" media="(max-width:480px) ">
 
     <script>
       (function(w,g){w['GoogleAnalyticsObject']=g;
@@ -21,13 +22,13 @@
       ga('create', 'UA-XXXX-Y');
       ga('send', 'pageview');
     </script>
-    <script src="http://www.google-analytics.com/analytics.js"></script>
+    <script src="http://www.google-analytics.com/analytics.js" async></script>
     <script async src="js/perfmatters.js"></script>
   </head>
 
   <body>
     <header>
-      <a href="/"><img src="img/profilepic.jpg"></a>
+      <a href="/"><img src="dist/profilepic.jpg"></a>
       <p>Cameron Pittman<br><span>Course Developer</span></p>
     </header>
 
@@ -57,15 +58,26 @@
           </li>
 
           <li>
-            <img style="width: 100px;" src="views/images/pizzeria.jpg">
-            <a href="views/pizza.html">Cam's Pizzeria</a>
+            <img style="width: 100px;" src="dist/pizzeria.jpg">
+            <a href="dist/pizza.html">Cam's Pizzeria</a>
             <p>Who wants a performant pizza?</p>
           </li>
         </ul>
     </div>
-
+      <script>
+        var cb = function() {
+          var l = document.createElement('link'); l.rel = 'stylesheet';
+          l.href = 'css/smartphone.css';
+          var h = document.getElementsByTagName('head')[0]; h.parentNode.insertBefore(l, h);
+        };
+        var raf = requestAnimationFrame || mozRequestAnimationFrame ||
+                webkitRequestAnimationFrame || msRequestAnimationFrame;
+        if (raf) raf(cb);
+        else window.addEventListener('load', cb);
+      </script>
     <footer>
       <p>&copy; Web Performance 2014 <span id="crp-stats"></span></p>
     </footer>
+
   </body>
 </html>
