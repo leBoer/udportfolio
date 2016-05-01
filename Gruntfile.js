@@ -54,6 +54,18 @@ module.exports = function(grunt) {
                     ext: '.min.css'
                 }]
             }
+        },
+        htmlmin: {                                     // Task
+            dist: {                                      // Target
+                options: {                                 // Target options
+                    removeComments: true,
+                    collapseWhitespace: true
+                },
+                files: {                                   // Dictionary of files
+                    'dist/index.html': 'index.html'     // 'destination': 'source'
+
+                }
+            }
         }
     });
 
@@ -76,6 +88,7 @@ module.exports = function(grunt) {
     //grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-psi-ngrok');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadNpmTasks('grunt-contrib-htmlmin');
 
     // Register default tasks
 
@@ -83,7 +96,8 @@ module.exports = function(grunt) {
         //'jshint',
         //'psi-ngrok',
         'imagemin',
-        'cssmin'
+        'cssmin',
+        'htmlmin'
     ]);
 
 };
